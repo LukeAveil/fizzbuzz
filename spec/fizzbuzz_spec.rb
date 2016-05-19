@@ -1,16 +1,21 @@
 require 'fizzbuzz'
 
 describe 'fizzbuzz' do
-	it 'returns "fizz" when passed 3' do
-		expect(fizzbuzz(3)).to eq 'fizz'
+	
+	(1..100).each do |x|
+		it "returns 'fizzbuzz' when divisable by 3 and 5" do
+			expect(fizzbuzz(x)).to eq 'fizzbuzz' if (x % 3 == 0 && x % 5 == 0)
+		end
+		it "returns 'fizz' when divisable by 3" do
+			expect(fizzbuzz(x)).to eq 'fizz' if (x % 3 == 0)
+		end
+		it "returns 'buzz' when divisable by 5" do
+			expect(fizzbuzz(x)).to eq 'buzz' if (x % 5 == 0)
+		end
+		it 'returns the number when not divisable by 3 or 5' do
+			expect(fizzbuzz(x)).to eq x if (x % 3 != 0 && x % 5 != 0)
+		end
+		
 	end
-	it 'returns "buzz" when passed 5' do
-		expect(fizzbuzz(5)).to eq 'buzz'
-	end
-	it 'returns the number when passed' do
-		expect(fizzbuzz(11)).to eq 11
-	end
-	it 'returns "fizzbuzz" when passed 15' do
-		expect(fizzbuzz(15)).to eq 'fizzbuzz'
-	end
+	
 end
